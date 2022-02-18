@@ -1,0 +1,65 @@
+﻿@model IEnumerable<ProfileManager.Models.Candidate>
+
+@{ ViewData["Title"] = "Candidate Details"; }
+
+<h1>Manage Profiles</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DoB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlaceofBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobDetails)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>Download</th>
+            <th>Delete</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DoB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlaceofBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobDetails)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td> <a href="/Candidate/Download?blobName=@item.ResumeID">Download</a> </td>
+            <td> <a asp-action="Delete" asp-route-id="@item.ID">Delete</a> </td>
+        </tr>}
+    </tbody>
+</table>
